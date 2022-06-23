@@ -10,7 +10,7 @@ Most of my effort was spent on training model that predict a system level sancti
 3. Run notebook Training_taskX.ipynb
 
 
-# Test task model
+# Test task model with same model as the one from the competition
 1. Get the code and move to the code directory.
 2. Install python packages as specified in [requirement.txt](https://github.com/alexandregft/PHME-data-contest/blob/main/requirement.txt).
 3. Run notebook solution.ipynb in the folder Testing
