@@ -1,5 +1,5 @@
 # A Hierarchical XGBoost Early Detection Method for Quality and Productivity Improvement of Electronics Manufacturing Systems
-This repo holds the XGBoost methods part of my solution to the PHME Data Challenge 2022 [a link](https://github.com/PHME-Datachallenge/Data-Challenge-2022)
+This repo holds the XGBoost methods part of my solution to the PHME Data Challenge 2022 [Github Challenge link](https://github.com/PHME-Datachallenge/Data-Challenge-2022), [Conference Challenge Link](https://phm-europe.org/data-challenge)
 
 Most of my effort was spent on training model that predict a system level sanction with subsystem levels inputs both continuous and categorical
 
