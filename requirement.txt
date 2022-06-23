@@ -8,4 +8,3 @@ xgboost == 0.90
 category_encoders == 2.4.1
 statsmodels == 0.12.1
 optuna== 2.10.0
-sklearn >= 0.23.2
