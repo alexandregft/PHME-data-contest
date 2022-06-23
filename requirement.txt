@@ -1,30 +1,11 @@
-ipykernel == 5.3.4
-ipykernel._version == 5.3.4
-json == 2.0.9
-re == 2.2.1
-IPython == 7.20.0
-IPython.core.release == 7.20.0
-logging == 0.5.1.2
-zlib == 1.0
-pandas == 1.1.2+1.g514aca06b1
+
+pandas == 1.1.2
 numpy == 1.19.2
-mkl == 2.3.0
-numpy.core == 1.19.2
-numpy.core._multiarray_umath == 3.1
-numpy.lib == 1.19.2
-numpy.linalg._umath_linalg == b'0.1.5'
-csv == 1.0
-_csv == 1.0
 matplotlib == 3.1.2
-matplotlib.backends.backend_agg == 3.1.2
 scipy == 1.5.2
-sklearn == 0.23.2
-sklearn.base == 0.23.2
 joblib == 0.17.0
-joblib.externals.loky == 2.9.0
-joblib.externals.cloudpickle == 1.6.0
-sklearn.utils._joblib == 0.17.0
 xgboost == 0.90
 category_encoders == 2.4.1
 statsmodels == 0.12.1
 optuna== 2.10.0
+sklearn >= 0.23.2
