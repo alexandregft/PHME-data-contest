@@ -1,0 +1,110 @@
+# Configuration file for PHME Data Challenge Solution
+
+# Data paths
+data:
+  spi_training_pattern: "data/SPI_training_{}.csv.zip"
+  aoi_training: "data/AOI_training.csv.zip"
+  num_spi_files: 4
+
+# MLflow settings
+mlflow:
+  experiment_name: "PHME_Defect_Detection"
+  tracking_uri: "mlruns"
+  model_registry_name: "phme_xgboost_models"
+
+# Feature engineering
+features:
+  numeric_to_categorical:
+    - "Volume(%)"
+    - "Area(%)"
+    - "OffsetX(%)"
+    - "OffsetY(%)"
+
+  numeric_features:
+    - "Shape(um)"
+    - "PosX(mm)"
+    - "PosY(mm)"
+    - "SizeX"
+    - "SizeY"
+
+  categorical_features:
+    - "FigureID"
+    - "PinNumber"
+    - "PadID"
+    - "PadType"
+    - "Result"
+
+# Task 1 configuration
+task1:
+  name: "defect_detection"
+  target_column: "Target"
+  pos_label: 0
+  optuna_trials: 50
+  cv_folds: 5
+
+  xgboost_search_space:
+    objective: ["binary:logistic"]
+    tree_method: ["hist"]
+    lambda: [1e-3, 10.0]
+    alpha: [1e-3, 10.0]
+    colsample_bytree: [0.3, 1.0]
+    learning_rate: [0.001, 0.1]
+    n_estimators: [30, 40, 50, 70, 100, 150, 200]
+    max_depth: [3, 5, 7, 9, 11, 13, 15, 17, 20]
+    min_child_weight: [1, 300]
+
+# Task 2 configuration
+task2:
+  name: "operator_label_classification"
+  target_column: "Target"
+  pos_label: 0
+  optuna_trials: 50
+  cv_folds: 5
+
+  inner:
+    name: "inner_model"
+    encoding_variables:
+      - "AOILabel"
+      - "ComponentID"
+      - "FigureID_ComponentID"
+
+  outer:
+    name: "outer_model"
+    encoding_variables:
+      - "AOILabel"
+      - "ComponentID"
+      - "FigureID_ComponentID"
+
+# Task 3 configuration
+task3:
+  name: "repair_label_classification"
+  target_column: "Target"
+  optuna_trials: 50
+  cv_folds: 5
+
+  encoding_variables:
+    - "ComponentID"
+    - "FigureID_ComponentID"
+
+# Model output paths
+models:
+  save_dir: "models"
+  task1:
+    encoder: "models/task1_encoder.pkl"
+    model: "models/task1_model.json"
+  task2_inner:
+    encoder: "models/task2_inner_encoder.pkl"
+    model: "models/task2_inner_model.json"
+  task2_outer:
+    encoder: "models/task2_outer_encoder.pkl"
+    model: "models/task2_outer_model.json"
+  task3:
+    encoder: "models/task3_encoder.pkl"
+    model: "models/task3_model.json"
+    aoi_labels: "models/task3_aoi_labels.pkl"
+
+# Training settings
+training:
+  random_state: 42
+  test_size: 0.2
+  catboost_encoder_a: 0.3
